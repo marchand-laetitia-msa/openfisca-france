@@ -168,6 +168,16 @@ class ass_base_ressources_conjoint(Variable):
         return result
 
 
+class ass_base_ressource_cumul_individu(Variable):
+    value_type = float
+    label = u"Ressources qui déclenchent la possibilité"
+    entity = Individu
+    definition_period = MONTH
+
+    def formula_2017_09_01(individu, period):
+        return individu('salaire_imposable', period)
+
+
 class ass_eligibilite_individu(Variable):
     value_type = bool
     label = u"Éligibilité individuelle à l'ASS"
@@ -191,3 +201,23 @@ class ass_eligibilite_individu(Variable):
         ass_precondition_remplie = individu('ass_precondition_remplie', period)
 
         return and_(not_(aah_eligible), and_(demandeur_emploi_non_indemnise, ass_precondition_remplie))
+
+    def formula_2017_09_01(individu, period):
+        aah_eligible = individu('aah', period) > 0
+
+        demandeur_emploi_non_indemnise = and_(individu('activite', period) == TypesActivite.chomeur, individu('chomage_net', period) == 0)
+
+        nombre_mois_avec_ressource = (
+            + 1 * (individu('ass_base_ressource_cumul_individu', period.offset(-3)) > 0)
+            + 1 * (individu('ass_base_ressource_cumul_individu', period.offset(-2)) > 0)
+            + 1 * (individu('ass_base_ressource_cumul_individu', period.offset(-1)) > 0)
+        )
+
+        cumul_accepte = nombre_mois_avec_ressource < 3
+
+        demandeur_emploi_non_indemnise_et_cumul_accepte = demandeur_emploi_non_indemnise * cumul_accepte
+
+        # Indique que l'individu a travaillé 5 ans au cours des 10 dernieres années.
+        ass_precondition_remplie = individu('ass_precondition_remplie', period)
+
+        return and_(not_(aah_eligible), and_(demandeur_emploi_non_indemnise_et_cumul_accepte, ass_precondition_remplie))
