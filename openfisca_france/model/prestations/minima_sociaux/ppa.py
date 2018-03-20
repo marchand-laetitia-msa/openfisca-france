@@ -183,7 +183,7 @@ class ppa_ressources_hors_activite(Variable):
             ]
 
         ressources_hors_activite = famille.sum(ressources_hors_activite_i) + pf + sum(
-            famille(ressource, mois_demande) for ressource in ressources)
+            famille(ressource, period) for ressource in ressources)
 
         return ressources_hors_activite
 
