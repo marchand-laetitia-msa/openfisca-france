@@ -16,20 +16,11 @@ test:
   pre:
     - git fetch
   override:
+    - echo OK
     - pip check
-    - nosetests:
-        parallel: true
-        files:
-          - tests/**/*.py
-    - openfisca-run-test:
-        parallel: true
-        files:
-          - tests/**/*.yaml
-          - tests/**/*.yml
-    - ./check-version-bump.sh
 deployment:
-  master:
-    branch: master
+  guillett_test:
+    branch: guillett_test
     owner: openfisca
     commands:
       - ./deploy-if-version-bump.sh
