@@ -255,4 +255,4 @@ menages:
   personne_de_reference: 53d2521be40a7902009c338e
   statut_occupation_logement: locataire_vide
 output_variables:
-  aspa: 0
+  aspa: 1000
