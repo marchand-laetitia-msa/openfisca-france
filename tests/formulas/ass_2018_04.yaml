@@ -18,7 +18,6 @@
       aah: 0
   output_variables:
     ass: 494.40
-    # ass
 
 - name: "Allocation de solidarité spécifique - Cas N°2"
   description: Montant ASS pour personne seule avec ressources mensuelles inferieures à 659.20
@@ -40,7 +39,6 @@
       aah: 0
   output_variables:
     ass: 494.40
-    # ass
 
 - name: "Allocation de solidarité spécifique - Cas N°3"
   description: Montant ASS pour personne en couple avec ressources mensuelles inferieures à 1318.40
@@ -64,7 +62,6 @@
     - id: "parent2"
   output_variables:
     ass: 494.40
-    # ass
 
 - name: "Allocation de solidarité spécifique - Cas N°4"
   description: Montant ASS pour personne seule avec ressources mensuelles égale à 900
@@ -86,7 +83,6 @@
       aah: 0
   output_variables:
     ass: 253.60
-    # ass
 
 - name: "Allocation de solidarité spécifique - Cas N°5"
   description: Montant ASS pour personne seule avec ressources mensuelles égale à 1500
@@ -110,7 +106,6 @@
     - id: "parent2"
   output_variables:
     ass: 312.80
-    # ass
 
 - name: "Allocation de solidarité spécifique - Cas Non Passant N°1"
   description: Montant ASS pour personne seule avec ressources mensuelles superieure à 1153.60
@@ -132,7 +127,6 @@
       aah: 0
   output_variables:
     ass: 0
-    # ass
 
 - name: "Allocation de solidarité spécifique - Cas Non Passant N°1"
   description: Montant ASS pour personne en couple avec ressources mensuelles superieure à 1812.80
@@ -156,4 +150,3 @@
     - id: "parent2"
   output_variables:
     ass: 0
-    # ass
