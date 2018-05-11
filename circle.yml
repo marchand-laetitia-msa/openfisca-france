@@ -11,6 +11,7 @@ dependencies:
     # Uncomment and adapt the next line to use a particular feature branch of OpenFisca-Core to run Circle CI tests
     # - pip install --editable git+https://github.com/openfisca/openfisca-core.git@BRANCH_NAME#egg=OpenFisca-Core
     - pip install ".[test, api]" --upgrade
+    - pip install ruamel.yaml
 test:
   pre:
     - git fetch
