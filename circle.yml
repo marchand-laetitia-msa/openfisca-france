@@ -25,6 +25,10 @@ test:
         files:
           - tests/**/*.yaml
           - tests/**/*.yml
+    - python openfisca_france/scripts/yaml_round_trip.py:
+        parallel: true
+        files:
+          - tests/**/*.yaml
     - ./check-version-bump.sh
 deployment:
   master:
