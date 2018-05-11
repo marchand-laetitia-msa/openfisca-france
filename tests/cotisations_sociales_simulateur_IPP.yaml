@@ -144,7 +144,6 @@
   description: Montant cotisations sociales celibataire public non titulaire
   period: 2012-01
   absolute_error_margin: 0.005
-  absolute_error_margin: 1
   input_variables:
     date_naissance: 1972-01-01
     depcom_entreprise: "69381"
@@ -215,7 +214,6 @@
       date_naissance: 2000-01-01
     - id: "enfant2"
       date_naissance: 2009-01-01
-  absolute_error_margin: 2
   output_variables:
     fnal: [-8 - 2, 0, 0, 0]
     versement_transport: [-2000 * 0.0175, 0, 0, 0]  # = 35
@@ -247,7 +245,6 @@
   period: 2012-01
   absolute_error_margin: 0.005
   description: Montant cotisations sociales couple deux public titulaire deux enfants
-  absolute_error_margin: 1
   familles:
     parents: ["parent1", "parent2"]
     enfants: ["enfant1", "enfant2"]
