@@ -1,5 +1,11 @@
 # Changelog
 
+## 21.1.0 [#980](https://github.com/openfisca/openfisca-france/pull/980)
+
+* Amélioration technique
+* Détails :
+  - Adapte à Python 3
+
 ### 21.9.1 [#975](https://github.com/openfisca/openfisca-france/pull/975)
 
 * Évolution du système socio-fiscal.
