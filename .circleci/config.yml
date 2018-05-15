@@ -45,12 +45,12 @@ jobs:
             pip install --upgrade pip twine wheel
             pip install .[test] --upgrade
 
-      # # Uncomment and adapt the next line to use a particular feature branch of OpenFisca-Core to run Circle CI tests
-      # - run:
-      #     name: Install a particular feature branch of OpenFisca-Core
-      #     command: |
-      #       . /tmp/venv/openfisca-france/bin/activate
-      #       pip install --editable git+https://github.com/openfisca/openfisca-core.git@BRANCH_NAME#egg=OpenFisca-Core
+      # Uncomment and adapt the next line to use a particular feature branch of OpenFisca-Core to run Circle CI tests
+      - run:
+          name: Install a particular feature branch of OpenFisca-Core
+          command: |
+            . /tmp/venv/openfisca-france/bin/activate
+            pip install --editable git+https://github.com/openfisca/openfisca-core.git@fixup-py3#egg=OpenFisca-Core
 
       - save_cache:
           # PY_VERSION is set in the context
