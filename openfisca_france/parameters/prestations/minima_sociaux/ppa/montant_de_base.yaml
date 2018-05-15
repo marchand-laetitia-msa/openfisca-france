@@ -10,3 +10,6 @@ values:
   2017-04-01:
     value: 526.25
     reference: https://www.legifrance.gouv.fr/affichTexte.do;jsessionid=F0C7F140213C6E7F350E4D08F8ABCC7E.tplgfr21s_3?cidTexte=LEGITEXT000034780395&dateTexte=20170505&categorieLien=cid#LEGITEXT000034780395
+  2017-04-01:
+    value: 531.51
+    reference: https://www.legifrance.gouv.fr/affichTexte.do?cidTexte=JORFTEXT000036868789&fastPos=1&fastReqId=2006490975&categorieLien=id&oldAction=rechTexte
