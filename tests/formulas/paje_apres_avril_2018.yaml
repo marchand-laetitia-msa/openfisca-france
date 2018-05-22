@@ -1,0 +1,139 @@
+- name: "PAJE - PAB Passant - Cas N°1"
+  description: Montant PAJE
+  period: 2018-05
+  absolute_error_margin: 0.02
+  familles:
+    parents: ["parent1", "parent2"]
+    enfants: ["enfant1"]
+  foyers_fiscaux:
+    declarants: ["parent1", "parent2"]
+    personnes_a_charge: ["enfant1"]
+  menages:
+    personne_de_reference: "parent1"
+    conjoint: "parent2"
+    enfants: ["enfant1"]
+  individus:
+    - id: "parent1"
+      age: 38
+      revenu_assimile_salaire:
+        2015: 10000
+        2016: 10000
+        2017: 10000
+        2018: 10000
+    - id: "parent2"
+      age: 35
+      revenu_assimile_salaire:
+        2015: 5000
+        2016: 5000
+        2017: 5000
+        2018: 5000
+    - id: "enfant1"
+      date_naissance: 2018-04-10
+  output_variables:
+    paje: 171.56
+
+- name: "PAJE - PAB Passant - Cas N°2"
+  description: Montant PAJE
+  period: 2018-05
+  absolute_error_margin: 0.02
+  familles:
+    parents: ["parent1", "parent2"]
+    enfants: ["enfant1", "enfant2"]
+  foyers_fiscaux:
+    declarants: ["parent1", "parent2"]
+    personnes_a_charge: ["enfant1", "enfant2"]
+  menages:
+    personne_de_reference: "parent1"
+    conjoint: "parent2"
+    enfants: ["enfant1", "enfant2"]
+  individus:
+    - id: "parent1"
+      age: 38
+      revenu_assimile_salaire:
+        2015: 10000
+        2016: 10000
+        2017: 10000
+        2018: 10000
+    - id: "parent2"
+      age: 35
+      revenu_assimile_salaire:
+        2015: 5000
+        2016: 5000
+        2017: 5000
+        2018: 5000
+    - id: "enfant1"
+      date_naissance: 2014-08-05
+    - id: "enfant2"
+      date_naissance: 2018-04-10
+  output_variables:
+    paje: 171.56
+
+- name: "PAJE - PAB Passant - Cas N°4"
+  description: Montant PAJE
+  period: 2018-05
+  absolute_error_margin: 0.02
+  familles:
+    parents: ["parent1", "parent2"]
+    enfants: ["enfant1"]
+  foyers_fiscaux:
+    declarants: ["parent1", "parent2"]
+    personnes_a_charge: ["enfant1"]
+  menages:
+    personne_de_reference: "parent1"
+    conjoint: "parent2"
+    enfants: ["enfant1"]
+  individus:
+    - id: "parent1"
+      age: 38
+      revenu_assimile_salaire:
+        2015: 18900
+        2016: 18900
+        2017: 18900
+        2018: 18900
+    - id: "parent2"
+      age: 35
+      revenu_assimile_salaire:
+        2015: 20000
+        2016: 20000
+        2017: 20000
+        2018: 20000
+    - id: "enfant1"
+      date_naissance: 2018-04-10
+  output_variables:
+    paje: 85.78
+
+- name: "PAJE - PAB Passant - Cas N°5"
+  description: Montant PAJE
+  period: 2018-05
+  absolute_error_margin: 0.02
+  familles:
+    parents: ["parent1", "parent2"]
+    enfants: ["enfant1", "enfant2"]
+  foyers_fiscaux:
+    declarants: ["parent1", "parent2"]
+    personnes_a_charge: ["enfant1", "enfant2"]
+  menages:
+    personne_de_reference: "parent1"
+    conjoint: "parent2"
+    enfants: ["enfant1", "enfant2"]
+  individus:
+    - id: "parent1"
+      age: 38
+      revenu_assimile_salaire:
+        2015: 35000
+        2016: 35000
+        2017: 35000
+        2018: 35000
+    - id: "parent2"
+      age: 35
+      revenu_assimile_salaire:
+        2015: 10000
+        2016: 10000
+        2017: 10000
+        2018: 10000
+    - id: "enfant1"
+      date_naissance: 2014-08-05
+    - id: "enfant2"
+      date_naissance: 2018-04-10
+  output_variables:
+    paje: 85.78
