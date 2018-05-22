@@ -216,6 +216,12 @@ class aah_base(Variable):
             1 + en_couple + law.minima_sociaux.aah.tx_plaf_supp * af_nbenf)
         montant_aah = max_(plaf_ress_aah - aah_base_ressources, 0) / 12
 
+        # TODO : appliquer un montant minimal de l'aah dans certains cas (vérifier depuis quand ce minimum existe)
+        # Utiliser le montant minimal dans les cas :
+        # après 60 jours d'hospitalisation, d'accueil en MAS, d'incarcération
+        # ces variables n'existent pas encore
+        # montant_minimal_aah = law.minima_sociaux.aah.montant * law.minima_sociaux.aah.taux_montant_minimal
+
         # Pour le moment, on ne neutralise pas l'aah en cas de non calculabilité pour pouvoir tester
         return aah_eligible * montant_aah  # * not_(aah_non_calculable)
 
