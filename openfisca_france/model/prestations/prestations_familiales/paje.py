@@ -186,12 +186,12 @@ class paje_base(Variable):
             return enfant_eligible_avant_reforme_2014
 
         def enfant_eligible_ne_apres_avril_2014_avant_avril_2018():
-            enfant_eligible_apres_reforme_2014 = famille.members('paje_base_enfant_eligible_apres_reforme_2014', period)
+            enfant_eligible_apres_reforme_2014 = famille.members('paje_base_enfant_eligible_apres_reforme_2014_ne_apres_avril_2014_avant_avril_2018', period)
             return enfant_eligible_apres_reforme_2014
 
         def enfant_eligible_ne_apres_avril_2018():
-            paje_base_enfant_eligible_apres_reforme_2014_ne_apres_2018 = famille.members('paje_base_enfant_eligible_apres_reforme_2014_ne_apres_2018', period)
-            return paje_base_enfant_eligible_apres_reforme_2014_ne_apres_2018
+            paje_base_enfant_eligible_apres_reforme_2014_ne_apres_avril_2018 = famille.members('paje_base_enfant_eligible_apres_reforme_2014_ne_apres_avril_2018', period)
+            return paje_base_enfant_eligible_apres_reforme_2014_ne_apres_avril_2018
 
         def montant_enfant_ne_avant_avril_2014():
             ressources = famille('prestations_familiales_base_ressources', period)
@@ -225,10 +225,11 @@ class paje_base(Variable):
         montant_elig_avant_avril_2014 = montant_enfant_ne_avant_avril_2014()      
 
         # Eligibilité après le 1er avril 2014
+        # Enfants nés après le 1er avril 2014 mais avant le 1er avril 2018 
         enfant_eligible_ne_apres_avril_2014_avant_avril_2018 = famille.any(enfant_eligible_ne_apres_avril_2014_avant_avril_2018() * est_plus_jeune_enfant)
-        enfant_eligible_ne_apres_avril_2018 = famille.any(enfant_eligible_ne_apres_avril_2018() * est_plus_jeune_enfant)
-        # Nous déterminons le nombre d'enfants nés après le 1er avril 2014 mais avant le 1er avril 2018 
         montant_elig_apres_avril_2014_avant_avril_2018 = montant_enfant_ne_apres_avril_2014_avant_avril_2018()
+        # Enfants nés après le 1er avril 2018 
+        enfant_eligible_ne_apres_avril_2018 = famille.any(enfant_eligible_ne_apres_avril_2018() * est_plus_jeune_enfant)
         montant_elig_apres_avril_2018 = montant_enfant_ne_apres_avril_2018()
 
         montant = (
@@ -359,6 +360,23 @@ class paje_base_enfant_eligible_apres_reforme_2014(Variable):
         autonomie_financiere = individu('autonomie_financiere', period)
         date_naissance = individu('date_naissance', period)
         ne_avant_2014 = datetime64('2014-04-01') > date_naissance
+        age_limite = parameters(period.start).prestations.prestations_familiales.paje.base.age_max_enfant
+
+        # L'allocation de base est versée jusqu'au dernier jour du mois civil précédant
+        # celui au cours duquel l'enfant atteint l'âge de 3 ans.
+        return (age < age_limite) * not_(autonomie_financiere) * not_(ne_avant_2014)
+
+class paje_base_enfant_eligible_apres_reforme_2014_ne_apres_avril_2014_avant_avril_2018(Variable):
+    value_type = bool
+    entity = Individu
+    label = u"Enfant ouvrant droit à la PAJE de base né après le 1er avril 2014"
+    definition_period = MONTH
+
+    def formula(individu, period, parameters):
+        age = individu('age', period)
+        autonomie_financiere = individu('autonomie_financiere', period)
+        date_naissance = individu('date_naissance', period)
+        ne_avant_2014 = datetime64('2014-04-01') > date_naissance
         ne_apres_avril_2018 = datetime64('2018-04-01') < date_naissance
         age_limite = parameters(period.start).prestations.prestations_familiales.paje.base.age_max_enfant
 
@@ -366,7 +384,7 @@ class paje_base_enfant_eligible_apres_reforme_2014(Variable):
         # celui au cours duquel l'enfant atteint l'âge de 3 ans.
         return (age < age_limite) * not_(autonomie_financiere) * not_(ne_avant_2014) * not_(ne_apres_avril_2018)
 
-class paje_base_enfant_eligible_apres_reforme_2014_ne_apres_2018(Variable):
+class paje_base_enfant_eligible_apres_reforme_2014_ne_apres_avril_2018(Variable):
     value_type = bool
     entity = Individu
     label = u"Enfant ouvrant droit à la PAJE de base né après le 1er avril 2018"
